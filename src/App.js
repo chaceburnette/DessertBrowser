@@ -1,8 +1,9 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import {DessertList, DessertDetails} from './screens';
+import DessertStore from './store/dessert.store';
+import { DessertList, DessertDetails } from './screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,7 @@ const App = () => {
         <Stack.Screen
           name="DessertList"
           component={DessertList}
-          options={{title: 'Desserts'}}
+          options={{ title: 'Desserts' }}
         />
         <Stack.Screen name="DessertDetails" component={DessertDetails} />
       </Stack.Navigator>
@@ -21,4 +22,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default DessertStore.Provider(App);
