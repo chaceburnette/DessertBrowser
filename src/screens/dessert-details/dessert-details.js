@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView, Text, View, Image, Dimensions } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { styles as s } from 'react-native-style-tachyons';
-import DessertStore from '../store/dessert.store';
+import { DessertStore } from '@store';
+import { Divider } from '@components';
+import SectionTitle from './components/section-title.component';
+import Ingredients from './components/ingredients.component';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -30,34 +33,13 @@ const DessertDetails = () => {
         />
       )}
       <Text style={[s.f3, s.mt3]}>{dessert.strMeal}</Text>
-      <View style={[s.bt, { borderColor: '#bbbbbb' }, s.mt3]} />
-      <Text style={[s.f5, { color: '#666666' }, s.mv3]}>Ingredients</Text>
+      <Divider />
+      <SectionTitle>Ingredients</SectionTitle>
       <Ingredients dessert={dessert} />
-      <View style={[s.bt, { borderColor: '#bbbbbb' }, s.mt3]} />
-      <Text style={[s.f5, { color: '#666666' }, s.mv3]}>Instructions</Text>
+      <Divider />
+      <SectionTitle> Instructions</SectionTitle>
       <Text style={[s.f7, s.mb4]}>{dessert.strInstructions}</Text>
     </ScrollView>
-  );
-};
-
-const Ingredients = ({ dessert }) => {
-  let ingredients = [];
-  for (let i = 1; i <= 20; i++) {
-    let ingredient = dessert[`strIngredient${i}`];
-    if (!ingredient || ingredient === '') {
-      continue;
-    }
-    ingredients.push(`${dessert[`strMeasure${i}`]} ${ingredient}`);
-  }
-
-  return (
-    <View style={s.flx_i}>
-      {ingredients.map((value, index) => (
-        <Text style={[s.f6, s.mb2]} key={index}>
-          {value}
-        </Text>
-      ))}
-    </View>
   );
 };
 

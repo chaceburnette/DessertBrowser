@@ -2,8 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import DessertStore from './store/dessert.store';
-import { DessertList, DessertDetails } from './screens';
+import { DessertStore } from '@store';
+import { DessertList, DessertDetails } from '@screens';
 
 const Stack = createNativeStackNavigator();
 
