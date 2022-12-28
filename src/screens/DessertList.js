@@ -15,12 +15,14 @@ const DessertListItem = ({ item }) => {
   };
 
   return (
-    <TouchableOpacity style={[s.pa2, s.flx_row]} onPress={_navigateToDetails}>
+    <TouchableOpacity
+      style={[s.bt, s.pa2, s.flx_row, { borderColor: '#bbb' }]}
+      onPress={_navigateToDetails}>
       <Image
         style={{ width: 100, height: 100 }}
         source={{ uri: item.strMealThumb }}
       />
-      <Text style={s.ml3}>{item.strMeal}</Text>
+      <Text style={[s.f6, s.ml3, s.flx_i]}>{item.strMeal}</Text>
     </TouchableOpacity>
   );
 };
