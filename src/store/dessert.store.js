@@ -13,6 +13,7 @@ const useDessertStore = () => {
       'https://themealdb.com/api/json/v1/1/filter.php?c=Dessert'
     );
     const data = await response.json();
+    data.meals.sort((a, b) => a.strMeal - b.strMeal);
     setDesserts(data.meals);
   };
 
